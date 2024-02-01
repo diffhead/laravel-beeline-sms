@@ -1,0 +1,29 @@
+{
+    "name": "saint-sample/laravel-beeline-sms",
+    "description": "Package that using beeline api for sms sending",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ggs\\LaravelBeelineSms\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Freshbitsweb\\LaravelLogEnhancer\\LaravelLogEnhancerServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Kirill Zolotarev",
+            "email": "saintsample36@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.1",
+        "laravel/framework": ">=9.0"
+    }
+}
