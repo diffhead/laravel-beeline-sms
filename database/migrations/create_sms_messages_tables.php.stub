@@ -1,0 +1,48 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        $tableName = config('laravel_beeline_sms.messages.table');
+
+        if (empty($tableName)) {
+            throw new \Exception('Error: table name for statistics config/laravel_beeline_sms.php not loaded. Run [php artisan config:clear] and try again.');
+        }
+
+        Schema::create($tableName, function (Blueprint $table) {
+            $table->id();
+            $table->string('external_message_id');
+            $table->string('status');
+            $table->string('target');
+            $table->string('message')->nullable();
+            $table->timestamp('sent_at');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        $tableName = config('laravel_beeline_sms.messages.table');
+
+        if (empty($tableName)) {
+            throw new \Exception('Error: table name for messages config/laravel_beeline_sms.php not loaded. Run [php artisan config:clear] and try again.');
+        }
+        
+        Schema::dropIfExists($tableName);
+    }
+};

@@ -1,17 +1,27 @@
 {
     "name": "saint-sample/laravel-beeline-sms",
-    "description": "Package that using beeline api for sms sending",
+    "description": "Light laravel package for sms sending via Beeline API",
     "type": "library",
     "license": "MIT",
+    "homepage": "https://github.com/SaintSample/laravel-beeline-sms",
+    "keywords": [
+        "laravel",
+        "beeline",
+        "sms",
+        "laravel-beeline",
+        "laravel-sms",
+        "saintsample",
+        "saint-sample"
+    ],
     "autoload": {
         "psr-4": {
-            "Ggs\\LaravelBeelineSms\\": "src/"
+            "SaintSample\\LaravelBeelineSms\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Freshbitsweb\\LaravelLogEnhancer\\LaravelLogEnhancerServiceProvider"
+                "SaintSample\\LaravelBeelineSms\\Providers\\BeelineSmsServiceProvider"
             ]
         }
     },
@@ -21,9 +31,21 @@
             "email": "saintsample36@gmail.com"
         }
     ],
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi",
+            "@php artisan vendor:publish --tag=laravel_beeline_sms-config --force"
+        ],
+        "post-update-cmd": [
+            "@php artisan package:discover --ansi",
+            "@php artisan vendor:publish --tag=laravel_beeline_sms-config"
+        ]
+    },
     "minimum-stability": "dev",
     "require": {
         "php": ">=8.1",
-        "laravel/framework": ">=9.0"
+        "laravel/framework": ">=9.0",
+        "nesbot/carbon": "^2.72.2"
     }
 }
