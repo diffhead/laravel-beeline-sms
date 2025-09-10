@@ -1,5 +1,5 @@
 {
-    "name": "saint-sample/laravel-beeline-sms",
+    "name": "diffhead/laravel-beeline-sms",
     "description": "Light laravel package for sms sending via Beeline API",
     "type": "library",
     "license": "MIT",
